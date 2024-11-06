@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 
-
 url = 'https://www.formula1.com/en/results.html/2024/fastest-laps.html'
 url_1 = 'https://www.formula1.com/en/results.html/2024/drivers.html'
 url_2 = 'https://www.formula1.com/en/results.html/2024/team.html'
