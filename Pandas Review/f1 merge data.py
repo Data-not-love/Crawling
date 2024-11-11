@@ -17,18 +17,21 @@ print ("------------------------------------------------------------------")
 result = merged_df.groupby("Driver").agg(
         count_record_lap = pd.NamedAgg (column = "Time" , aggfunc = 'count'))
 print (result)
+print ("------------------------------------------------------------------")
 
 # hiện số lần win record lap dưới 1:20
 query = merged_df[merged_df['Time'] <= "1:20"].groupby("Driver").agg(
         count = pd.NamedAgg(column = "Time" , aggfunc = "count")
         )
 print (query)
+print ("------------------------------------------------------------------")
 
 # đếm số tay đua đạt record lap của từng quốc tịch
 query_2 = merged_df.groupby("Nationality").agg(
     number_of_driver = pd.NamedAgg (column="Time", aggfunc = "count")
         )
 print(query_2)
+print ("------------------------------------------------------------------")
 
 
 # đếm số lần đạt record lap của từng car
