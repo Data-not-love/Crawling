@@ -1,8 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-
-url = 'https://www.formula1.com/en/teams.html'
+url = 'https://www.formula1.com/en/drivers.html'
 response = requests.get(url)
 print (response)
 content = response.text
@@ -17,10 +16,7 @@ href_links = []
 base_url = 'https://www.formula1.com'
 for tag_link in tag_links:
     href = tag_link.get('href')  # Lấy giá trị của thuộc tính href
-    if href and href.startswith('/en/teams/'):
+    if href and href.startswith('/en/drivers/'):
         href_links.append(f'{base_url}'+href+'.html')
 
 print(href_links)
-
-
-
