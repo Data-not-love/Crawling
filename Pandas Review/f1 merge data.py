@@ -47,8 +47,8 @@ query_4 = merged_df[merged_df["Time"] <= '1:20'].groupby("Car").agg(
         )
 print (query_4)
 
-
-
+# in ra team, các tay đua và số lần đạt record lap
+print ("------------------------------------------------------------------")
 query_5 = merged_df.groupby(["Car","Driver"]).agg(
         number_of_record_lap = pd.NamedAgg(column = "Time" , aggfunc = "count")
         )
