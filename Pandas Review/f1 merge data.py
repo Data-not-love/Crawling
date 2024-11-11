@@ -39,3 +39,17 @@ query_3 = merged_df.groupby("Car").agg(
     number_of_record_lap = pd.NamedAgg(column = "Time" , aggfunc = "count")
         )
 print (query_3)
+
+print ("------------------------------------------------------------------")
+# đếm số lần đạt record lap < 1:20 cửa từng car
+query_4 = merged_df[merged_df["Time"] <= '1:20'].groupby("Car").agg(
+        number_of_record_lap = pd.NamedAgg(column = "Time" , aggfunc = "count")
+        )
+print (query_4)
+
+
+
+query_5 = merged_df.groupby(["Car","Driver"]).agg(
+        number_of_record_lap = pd.NamedAgg(column = "Time" , aggfunc = "count")
+        )
+print (query_5)
