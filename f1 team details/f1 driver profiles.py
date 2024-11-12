@@ -17,6 +17,7 @@ for content in contents:
     soup = BeautifulSoup(content,'html.parser')
     #class_ strip thông tin cụ thể
     tags = soup.find_all(['p','h1','dd','dt'], class_ = [p,h1,dd,dt])
+    #driver_number = soup.find_all('p', class_= p)
 
     # Duyệt qua các thẻ `dd` và `dt`
     extracted_values = {}
@@ -25,12 +26,14 @@ for content in contents:
     # Duyệt qua các thẻ `dd` và `dt`
     for tag in tags:
 
-        stripped_text = tag.get_text(strip=True, separator=' ')
+        stripped_text_drive_name = tag.get_text(strip=True, separator=' ')
+        #stripped_text_drive_number = tag.get_text(strip=True, separator=' ')
+
 
         if tag.name == 'dt' :
-            current_key = stripped_text
+            current_key = stripped_text_drive_name
         if tag.name == 'dd' or tag.name == 'h1' or tag.name == 'p' and current_key :
-            extracted_values[current_key] = stripped_text
+            extracted_values[current_key] = stripped_text_drive_name
             # reset key = 0 để ko thêm list roongx
             current_key = None
 
@@ -39,12 +42,13 @@ for content in contents:
         if None in extracted_values:
             driver_name = extracted_values.pop(None)
 
+
         elif "null" in extracted_values:
             driver_name = extracted_values.pop("null")
 
         # Tạo dictionary mới với tên tài xế ở đầu
         ordered_dict = {
-            "Driver's Name": driver_name,
+            "Driver": driver_name,
             **extracted_values  # spread operator để thêm các key-value pairs còn lại
         }
 
@@ -52,5 +56,4 @@ for content in contents:
 
 json_output = json.dumps(all_data, ensure_ascii=False, indent=4)
 print(json_output)
-
 
