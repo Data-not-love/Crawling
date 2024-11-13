@@ -40,23 +40,39 @@ merged_df['Time in seconds'] = merged_df['Time'].apply(time_to_seconds)
 print ("------------------------------------------------------------------")
 # mean time
 mean = merged_df["Time in seconds"].mean()
-print ("Mean time in seconds : " + str(mean))
 
+# median time
+median = merged_df["Time in seconds"].median()
+
+print ("Mean time in seconds : " + str(mean))
+print ("Median time in seconds : " + str(median))
 def seconds_to_minute (seconds):
     minutes = int(seconds // 60)
     remaining_seconds = round(seconds % 60, 3)
     return f"{minutes}:{remaining_seconds:05.3f}"
 
 
+# in data frame sau merge
 mean_to_minute = seconds_to_minute(mean)
+median_to_minute = seconds_to_minute(median)
+
 print ("Reformated : " + str(mean_to_minute))
+print ("Reformated : " + str(median_to_minute)) 
+print ("------------------------------------------------------------------")
+
+
+# tìm các tay đua có time < mean
+query_3 = merged_df[merged_df["Time"] <= mean_to_minute ]
+print (query_3[["Grand Prix","Driver","Country","Time"]])
 
 print ("------------------------------------------------------------------")
-# tìm các tay đua có time < mean
+# tìm các tay đua có time > median
 
-query_3 = merged_df[merged_df["Time"] <= mean_to_minute ]
-print (query_3[["Grand Prix","Driver","Time"]])
-
-
+query_4 = merged_df[merged_df["Time"] > median_to_minute]
+print (query_4[["Grand Prix","Driver","Country","Time"]])
 
 
+print ("------------------------------------------------------------------")
+# tìm các tay đua có Highest grid position < 3
+query_5 = merged_df[merged_df["Highest grid position"] < 3]
+print (query_5[["Driver","Highest grid position"]])
