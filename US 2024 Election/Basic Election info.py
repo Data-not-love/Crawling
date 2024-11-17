@@ -1,12 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
+url  = "https://daotao.vku.udn.vn/sv/lienheGV"
+url_1 = 'https://interactives.ap.org/election-results/customers/layouts/organization-layouts/published/49221/23238.html'
+u ="https://www.270towin.com/2024-election-results-live/president/"
+response = requests.get(u)
+content = response.text
+print (response)
+print (content)
 
-url = 'https://interactives.ap.org/election-results/customers/layouts/organization-layouts/published/49221/23238.html'
-from selenium import webdriver
-driver = webdriver.Chrome()  # hoặc Firefox, Edge
-driver.get(url)
-html_content = driver.page_source
-with open("page.html", "w", encoding="utf-8") as file:
-    file.write(html_content)
-driver.quit()
+print ("----------------------------------------------------------------------------------------")
+soup = BeautifulSoup(content,'html.parser')
+print(soup.prettify())
