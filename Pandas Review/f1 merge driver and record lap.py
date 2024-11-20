@@ -1,4 +1,4 @@
-import pandas as pd 
+import pandas as pd
 
 
 df_1 = pd.read_csv("F:/3.5 Years/First Year/Python/Web Scarping/f1_fastest_lap.csv")
@@ -56,8 +56,8 @@ def seconds_to_minute (seconds):
 mean_to_minute = seconds_to_minute(mean)
 median_to_minute = seconds_to_minute(median)
 
-print ("Reformated : " + str(mean_to_minute))
-print ("Reformated : " + str(median_to_minute)) 
+print ("Reformated Mean : " + str(mean_to_minute))
+print ("Reformated Median : " + str(median_to_minute))
 print ("------------------------------------------------------------------")
 
 
@@ -73,6 +73,6 @@ print (query_4[["Grand Prix","Driver","Country","Time"]])
 
 
 print ("------------------------------------------------------------------")
-# tìm các tay đua có Highest grid position < 3
-query_5 = merged_df[merged_df["Highest grid position"] < 3]
+# tìm các tay đua có Highest grid position <= 3
+query_5 = merged_df[merged_df["Highest grid position"] <= 3]
 print (query_5[["Driver","Highest grid position"]])
