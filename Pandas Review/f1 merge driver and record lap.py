@@ -76,3 +76,5 @@ print ("------------------------------------------------------------------")
 # tìm các tay đua có Highest grid position == 1
 query_5 = merged_df[(merged_df["Highest grid position"] == 1) & (merged_df["Time"] <= mean_to_minute)]
 print (query_5[["Driver","Highest grid position","Time"]])
+
+print ("-----------------------------------------------------------------")
