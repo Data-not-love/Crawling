@@ -73,6 +73,6 @@ print (query_4[["Grand Prix","Driver","Country","Time"]])
 
 
 print ("------------------------------------------------------------------")
-# tìm các tay đua có Highest grid position <= 3
-query_5 = merged_df[merged_df["Highest grid position"] <= 3]
-print (query_5[["Driver","Highest grid position"]])
+# tìm các tay đua có Highest grid position == 1
+query_5 = merged_df[(merged_df["Highest grid position"] == 1) & (merged_df["Time"] <= mean_to_minute)]
+print (query_5[["Driver","Highest grid position","Time"]])
