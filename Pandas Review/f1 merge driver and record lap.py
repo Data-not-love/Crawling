@@ -2,6 +2,7 @@ import pandas as pd
 
 
 df_1 = pd.read_csv("F:/3.5 Years/First Year/Python/Web Scarping/f1_fastest_lap.csv")
+print (df_1.columns)
 print (df_1["Driver"])
 
 print ("------------------------------------------------------------------")
@@ -74,7 +75,7 @@ print (query_4[["Grand Prix","Driver","Country","Time"]])
 
 print ("------------------------------------------------------------------")
 # tìm các tay đua có Highest grid position == 1
-query_5 = merged_df[(merged_df["Highest grid position"] == 1) & (merged_df["Time"] <= mean_to_minute)]
-print (query_5[["Driver","Highest grid position","Time"]])
+query_5 = merged_df[(merged_df["Highest grid position"] == 1) & (merged_df["Time"] <= mean_to_minute) & (merged_df["Points"] >= 2000)]
+print (query_5[["Driver","Time","Points","Highest race finish"]])
 
 print ("-----------------------------------------------------------------")
